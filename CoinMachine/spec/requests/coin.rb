@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Coins API', type: :request  do
-      # initialize test data 
     let!(:coins) { create_list(:coin, 10) }
     let(:coin_id) { coins.first.id }
 
@@ -69,7 +68,7 @@ RSpec.describe 'Coins API', type: :request  do
                 expect(response).to have_http_status(422)
             end
 
-            it 'returns a vlidation failure message' do
+            it 'returns a validation failure message' do
                 expect (response.body).to match(/Validation failed: Value can't be blank/)
             end
         end
@@ -89,6 +88,20 @@ RSpec.describe 'Coins API', type: :request  do
             it 'returns status code 204' do
                 expect(response).to have_http_status(204)
             end
+        end
+    end
+
+    # Test suite for DELETE /coins/:id
+    describe 'DELETE /coins/:id' do
+        before { delete "/coins/#{coin_id}" }
+
+        it 'returns status code 204' do
+            expect(response).to have_http_status(204)
+        end
+
+        it 'returns a success message' do 
+            json_response = JSON.parse(response.body)
+            expect(json_response.message).to eq('The Coin has been deleted successfully')
         end
     end
 
