@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
 
     def create
         transaction = Transaction.new(transaction_params)
+
         if transaction.save 
             render json: transaction.to_json
         else
@@ -22,7 +23,7 @@ class TransactionsController < ApplicationController
     private
 
     def transaction_params
-        params.require(:transaction).permit(:user_id, :coin_id)
+        params.require(:transaction).permit(:user_id, :coin_id, :is_deposit)
     end
 
 end
