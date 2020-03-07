@@ -36,7 +36,7 @@ RSpec.describe 'Transactions API', type: :request  do
         end
 
         context 'when the record does not exist' do 
-            let(:transaction_id) { 100 }
+            let(:transaction_id) { 1000 }
 
             it 'returns status code 404' do
                 expect(response).to have_http_status(404)
@@ -51,7 +51,8 @@ RSpec.describe 'Transactions API', type: :request  do
             before { post '/transactions', params: valid_attributes }
             
             it 'creates a transaction' do
-                expect(json['name']).to eq('bitcoin')
+                expect(json['user_id']).to eq(1)
+                expect(json['coin_id']).to eq(1)
             end
 
             it 'returns a status code 201' do 
