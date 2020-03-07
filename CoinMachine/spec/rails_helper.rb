@@ -6,7 +6,6 @@ require File.expand_path('../config/environment', __dir__)
 
 require 'database_cleaner'
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'faker'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}

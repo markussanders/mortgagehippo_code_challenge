@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_223241) do
+ActiveRecord::Schema.define(version: 2020_03_07_015027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_03_06_223241) do
     t.index ["user_id"], name: "index_coins_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "coin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coin_id"], name: "index_transactions_on_coin_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "is_admin", default: false
     t.string "api_key"
@@ -34,4 +43,6 @@ ActiveRecord::Schema.define(version: 2020_03_06_223241) do
   end
 
   add_foreign_key "coins", "users"
+  add_foreign_key "transactions", "coins"
+  add_foreign_key "transactions", "users"
 end

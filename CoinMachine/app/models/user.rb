@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :coins
+    has_many :transactions
     
     before_validation :assign_api_key, :on => :create
     
