@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: user, only: [:name, :email], include: [:coins]
+        render json: user, only: [:name, :email], include: [:coins, :transactions]
     end
 
     def create
