@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
         transaction = Transaction.new(transaction_params)
 
         if !transaction.is_deposit && !is_valid_transaction?(transaction.coin_id) 
-            return render invalid_transction_error, status: :bad_request
+            return render json: invalid_transction_error, status: :bad_request
         end 
 
         if transaction.save 
