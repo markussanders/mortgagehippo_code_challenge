@@ -16,6 +16,6 @@ module TransactionUtils
     end
 
     def invalid_transction_error
-        {errors: "There are not enough coins to complete this withdrawal."}
+        {errors: "There are not enough coins to complete this withdrawal."}.to_json
     end
 end
