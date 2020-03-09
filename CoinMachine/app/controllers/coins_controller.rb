@@ -1,5 +1,6 @@
 class CoinsController < ApplicationController
-
+    before_action :authenticate
+    
     def index
         coins = Coin.all
         total_values = Coin.total_values

@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+    before_action :authenticate
+    
     include TransactionUtils
 
     def index
