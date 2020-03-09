@@ -1,0 +1,11 @@
+<h1>Low Balance Alert</h1>
+<p>
+  There are less than <em>4 <%= @coin.name %>'s</em> remaining. Please deposit more of this coin.
+</p>
+
+<p> The amount remaining of each coin in the system is: </p>
+<blockquote>
+  <em><%= @balances %></em>
+</blockquote>
+
+<p> Which brings the total value all coins to be: <em><%= @total_values %></em></p>
